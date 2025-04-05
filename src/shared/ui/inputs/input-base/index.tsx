@@ -1,5 +1,6 @@
 import {TextInput} from 'react-native';
 import {InputBaseProps} from '@shared/ui/inputs/types';
+import {colors} from '@shared/styles/colors';
 
 export function InputBase({
   value,
@@ -19,10 +20,11 @@ export function InputBase({
       value={value}
       onPress={onPress}
       placeholder={placeholder}
+      placeholderTextColor={colors.orange.orange200}
       onBlur={onBlur}
       onFocus={onFocus}
       style={style}
-      onChange={onChange}
+      onChangeText={onChange}
       multiline={multiline}
       readOnly={disabled}
     />

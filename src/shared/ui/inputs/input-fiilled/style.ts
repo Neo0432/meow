@@ -24,4 +24,13 @@ export const styles = StyleSheet.create({
     maxWidth: '80%',
     flex: 1,
   },
+
+  input: {
+    //TODO Добавить шрифт
+    color: colors.orange.orange250,
+    paddingTop: -16,
+    paddingLeft: -8,
+    width: '100%',
+    fontSize: 16,
+  },
 });

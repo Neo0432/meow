@@ -4,21 +4,23 @@ import {SvgVisibilityOff} from '@shared/assets/icons/components/inputs/visibilit
 import {Dispatch, SetStateAction} from 'react';
 import {Pressable, TouchableWithoutFeedback} from 'react-native';
 
-interface IconInputProps {
+interface InputIconProps {
   size: number;
   type: 'check' | 'password';
+  isCorrect?: boolean;
   isShown?: boolean;
   setIsShown?: Dispatch<SetStateAction<boolean>>;
 }
 
-export const IconInput = ({
+export const InputIcon = ({
   size,
   type,
+  isCorrect,
   isShown,
   setIsShown,
-}: IconInputProps) => {
+}: InputIconProps) => {
   return type === 'check' ? (
-    <SvgCheck width={size} height={size} />
+    isCorrect && <SvgCheck width={size} height={size} />
   ) : (
     <Pressable onPress={() => setIsShown!(prev => !prev)}>
       <EyeToggle size={size} isShown={!!isShown} />

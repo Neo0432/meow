@@ -1,4 +1,4 @@
-import {StyleProp, ViewStyle} from 'react-native';
+import {StyleProp, TextStyle, ViewStyle} from 'react-native';
 import {ReactNode} from 'react';
 
 export interface IButtonProps {
@@ -12,4 +12,8 @@ export interface IButtonProps {
 
 export interface IButtonWithLoadingProps extends IButtonProps {
   isLoading: boolean;
+}
+
+export interface IButtonWithTextProps extends IButtonWithLoadingProps {
+  textStyle?: StyleProp<TextStyle>;
 }
