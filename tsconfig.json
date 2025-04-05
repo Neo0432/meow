@@ -3,10 +3,16 @@
   "compilerOptions": {
     "strict": true,
     "paths": {
-      "@/*": [
-        "./*"
-      ]
-    }
+      "@/*": ["./*"],
+      "@app/*": ["./src/app/*"],
+      "@entrypoint/*": ["./src/entrypoint/*"],
+      "@entities/*": ["./src/entities/*"],
+      "@features/*": ["./src/features/*"],
+      "@widgets/*": ["./src/widgets/*"],
+      "@screens/*": ["./src/screens/*"],
+      "@shared/*": ["./src/shared/*"]
+    },
+    "jsx": "react-jsx"
   },
   "include": [
     "**/*.ts",
