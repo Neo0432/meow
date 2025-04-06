@@ -1,1 +1,1 @@
-export {default as LoginScreen} from './ui/sign-up';
+export {default as RegistrationScreen} from './ui/sign-up';

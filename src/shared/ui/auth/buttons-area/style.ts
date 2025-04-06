@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {colors} from '@shared/styles/colors';
 
 export const styles = StyleSheet.create({
   container: {
@@ -11,5 +12,9 @@ export const styles = StyleSheet.create({
   textArea: {
     flexDirection: 'row',
     gap: 8,
+  },
+
+  textAreaText: {
+    color: colors.orange.orange500,
   },
 });

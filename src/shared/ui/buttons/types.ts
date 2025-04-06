@@ -17,3 +17,8 @@ export interface IButtonWithLoadingProps extends IButtonProps {
 export interface IButtonWithTextProps extends IButtonWithLoadingProps {
   textStyle?: StyleProp<TextStyle>;
 }
+
+export interface UITextButton {
+  onPress: () => void;
+  disabled?: boolean;
+}

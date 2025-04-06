@@ -5,14 +5,23 @@ import {InputFilled} from '@shared/ui/inputs/input-fiilled';
 import {styles} from './style';
 import {ButtonsArea} from '@shared/ui/auth/buttons-area';
 import {InputLabel} from '@shared/ui/inputs/input-label';
+import {ISignUpForm} from '@features/auth/signup-form/model/types';
+import {useRouter} from 'expo-router';
 
 export function RegistrationForm() {
+  const router = useRouter();
+
   const methods = useSignUpForm();
   const {
     handleSubmit,
-    formState: {errors, isSubmitting, isLoading, isValid},
+    formState: {isSubmitting, isLoading, isValid},
     control,
   } = methods;
+
+  const onSubmit = async (data: ISignUpForm) => {
+    console.log('Submitting...');
+    console.log(data);
+  };
 
   return (
     <View style={styles.container}>
@@ -68,10 +77,13 @@ export function RegistrationForm() {
         />
       </View>
       <ButtonsArea
-        onSubmit={() => {}}
+        onSubmit={handleSubmit(onSubmit)}
         disabled={isSubmitting || !isValid}
         isLoading={isLoading}
         type="reg"
+        navigateTo={() => {
+          router.navigate('/auth/login');
+        }}
       />
     </View>
   );

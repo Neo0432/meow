@@ -30,7 +30,9 @@ import {colors} from '@shared/styles/colors';
 //   );
 // }
 
-import {LoginScreen} from '@screens/auth/sign-up';
+import {RegistrationScreen} from '@screens/auth/sign-up';
+import {LoginScreen} from '@screens/auth/sign-in';
 import {UIButtonWithText} from '@shared/ui/buttons/button-with-text';
 
-export default LoginScreen;
+export default RegistrationScreen;
+// export default LoginScreen;

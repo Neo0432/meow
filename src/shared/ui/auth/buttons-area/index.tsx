@@ -1,12 +1,14 @@
 import {UIButtonWithText} from '@shared/ui/buttons/button-with-text';
 import {Text, View} from 'react-native';
 import {styles} from '@shared/ui/auth/buttons-area/style';
+import {ButtonTextButton} from '@shared/ui/buttons/button-text-button';
 
 interface ButtonsAreaProps {
   disabled: boolean;
   onSubmit: () => void;
   isLoading: boolean;
   type: 'reg' | 'login';
+  navigateTo: () => void;
 }
 
 export function ButtonsArea({
@@ -14,6 +16,7 @@ export function ButtonsArea({
   isLoading,
   disabled,
   type,
+  navigateTo,
 }: ButtonsAreaProps) {
   return (
     <View style={styles.container}>
@@ -24,13 +27,16 @@ export function ButtonsArea({
         {type === 'reg' ? 'REGISTER' : 'LOG IN'}
       </UIButtonWithText>
 
+      {/*  TODO: Rework buttons*/}
       <View style={styles.textArea}>
-        <Text>
+        <Text style={styles.textAreaText}>
           {type === 'reg'
             ? 'Already has an account?'
             : 'Don’t have an account?'}
         </Text>
-        <Text>Log in</Text>
+        <ButtonTextButton onPress={navigateTo}>
+          {type === 'reg' ? 'Log in' : 'Sign up'}
+        </ButtonTextButton>
       </View>
     </View>
   );
