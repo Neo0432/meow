@@ -12,7 +12,6 @@ export const shadows = {
       android: {
         shadowColor: '#FF9A5C33',
         elevation: 5,
-        shadowOpacity: 0.2,
       },
     }),
   },

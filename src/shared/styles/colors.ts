@@ -7,8 +7,14 @@ export const blue = {
 export const orange = {
   orange50: '#FFF9F1',
   orange100: '#FFF0DB',
+  orange200: '#D3BDA8',
   orange250: '#FF9A5C',
   orange500: '#BA793B',
 };
 
-export const colors = {blue, orange};
+export const grayscale = {
+  grayscale0: '#FFFFFF',
+  grayscale500: '#c2c2c2',
+};
+
+export const colors = {grayscale, blue, orange};
