@@ -5,7 +5,7 @@ export interface IPet {
   name: string;
   type: string;
   breed: string;
-  sex: 'male' | 'female';
+  sex?: 'male' | 'female';
   chipNumber: string;
   medication: boolean;
   birthDate: string;
@@ -15,3 +15,23 @@ export interface IPet {
   lastWalk: string;
   lastMedical: string;
 }
+
+export interface IPetState {
+  pets: IPet[];
+}
+
+// id: '',
+// imageSource: '',
+//
+// name: '',
+// type: '',
+// breed: '',
+// sex: undefined,
+// chipNumber: '',
+// medication: false,
+// birthDate: '',
+// age: '',
+//
+// lastFeed: '',
+// lastWalk: '',
+// lastMedical: '',

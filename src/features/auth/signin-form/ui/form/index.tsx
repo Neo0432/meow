@@ -5,12 +5,12 @@ import {InputFilled} from '@shared/ui/inputs/input-fiilled';
 import {InputLabel} from '@shared/ui/inputs/input-label';
 import {ButtonsArea} from '@shared/ui/auth/buttons-area';
 import {styles} from './style';
-import {ISignInForm} from '@features/auth/signin-form/model/types';
 import {useRouter} from 'expo-router';
-import login from '@app/(root)/auth/login';
+import {useSignInSubmit} from '@features/auth/signin-form/hooks/use-sign-in-submit';
 
 export function SignInForm() {
   const router = useRouter();
+  const onSubmit = useSignInSubmit();
 
   const methods = useLoginForm();
   const {
@@ -18,11 +18,6 @@ export function SignInForm() {
     control,
     formState: {isSubmitting, isLoading, isValid},
   } = methods;
-
-  const onSubmit = async (data: ISignInForm) => {
-    console.log('Submitting...');
-    console.log(data);
-  };
 
   return (
     <View style={styles.container}>

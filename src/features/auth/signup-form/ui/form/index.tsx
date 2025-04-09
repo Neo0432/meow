@@ -7,9 +7,15 @@ import {ButtonsArea} from '@shared/ui/auth/buttons-area';
 import {InputLabel} from '@shared/ui/inputs/input-label';
 import {ISignUpForm} from '@features/auth/signup-form/model/types';
 import {useRouter} from 'expo-router';
+import {useAppDispatch} from '@shared/store';
+import {userSignUp} from '@entities/user/model/actions';
+import {useSignUpSubmit} from '@features/auth/signup-form/hooks/use-sign-up-submit';
 
 export function RegistrationForm() {
   const router = useRouter();
+  const onSubmit = useSignUpSubmit();
+
+  const dispatch = useAppDispatch();
 
   const methods = useSignUpForm();
   const {
@@ -17,11 +23,6 @@ export function RegistrationForm() {
     formState: {isSubmitting, isLoading, isValid},
     control,
   } = methods;
-
-  const onSubmit = async (data: ISignUpForm) => {
-    console.log('Submitting...');
-    console.log(data);
-  };
 
   return (
     <View style={styles.container}>
