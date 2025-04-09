@@ -13,6 +13,7 @@ export const orange = {
 };
 
 export const grayscale = {
+  grayscale0: '#FFFFFF',
   grayscale500: '#c2c2c2',
 };
 
