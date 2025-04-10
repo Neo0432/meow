@@ -27,7 +27,6 @@ export function ButtonsArea({
         {type === 'reg' ? 'REGISTER' : 'LOG IN'}
       </UIButtonWithText>
 
-      {/*  TODO: Rework buttons*/}
       <View style={styles.textArea}>
         <Text style={styles.textAreaText}>
           {type === 'reg'

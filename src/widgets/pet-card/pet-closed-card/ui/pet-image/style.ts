@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {colors} from '@shared/styles/colors';
+import {typography} from '@shared/styles/typography';
 
 export const styles = StyleSheet.create({
   image: {
@@ -31,14 +32,17 @@ export const styles = StyleSheet.create({
   },
 
   name: {
-    // TODO Сделать шрифт
+    ...typography.h5_outfit_semibold_16,
+    color: colors.grayscale.grayscale0,
   },
 
   age: {
-    // TODO Сделать шрифт
+    ...typography.b6_outfit_medium_12,
+    color: colors.grayscale.grayscale0,
   },
 
   sex: {
-    // TODO Сделать шрифт
+    ...typography.b8_outfit_light_12,
+    color: colors.grayscale.grayscale0,
   },
 });

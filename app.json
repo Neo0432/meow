@@ -33,7 +33,19 @@
           "backgroundColor": "#ffffff"
         }
       ],
-      "expo-secure-store"
+      "expo-secure-store",
+      ["expo-font",
+        {
+          "fonts": [
+            "./src/shared/assets/fonts/itim/Itim-Regular.ttf",
+            "./src/shared/assets/fonts/outfit/Outfit-ExtraLight.ttf",
+            "./src/shared/assets/fonts/outfit/Outfit-Light.ttf",
+            "./src/shared/assets/fonts/outfit/Outfit-Medium.ttf",
+            "./src/shared/assets/fonts/outfit/Outfit-Regular.ttf",
+            "./src/shared/assets/fonts/outfit/Outfit-SemiBold.ttf"
+          ]
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true

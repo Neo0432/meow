@@ -1,6 +1,7 @@
 import {StyleSheet} from 'react-native';
 import {shadows} from '@shared/styles/effects';
 import {colors} from '@shared/styles/colors';
+import {typography} from '@shared/styles/typography';
 
 export const styles = StyleSheet.create({
   container: {
@@ -26,11 +27,10 @@ export const styles = StyleSheet.create({
   },
 
   input: {
-    //TODO Добавить шрифт
+    ...typography.b1_itim_regular_16,
     color: colors.orange.orange250,
     paddingTop: -16,
     paddingLeft: -8,
     width: '100%',
-    fontSize: 16,
   },
 });

@@ -15,6 +15,7 @@ export const orange = {
 export const grayscale = {
   grayscale0: '#FFFFFF',
   grayscale500: '#c2c2c2',
+  grayscale800: '#000000',
 };
 
 export const colors = {grayscale, blue, orange};

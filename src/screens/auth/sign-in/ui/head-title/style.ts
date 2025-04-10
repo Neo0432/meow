@@ -1,4 +1,6 @@
 import {StyleSheet} from 'react-native';
+import {typography} from '@shared/styles/typography';
+import {colors} from '@shared/styles/colors';
 
 export const styles = StyleSheet.create({
   container: {
@@ -12,8 +14,8 @@ export const styles = StyleSheet.create({
   },
 
   title: {
-    //TODO Добавить шрифт
-    fontSize: 28,
+    ...typography.t2_itim_regular_28,
+    color: colors.grayscale.grayscale800,
     flexWrap: 'wrap',
     textAlign: 'left',
     flexShrink: 1,
