@@ -3,23 +3,26 @@ import {SessionProvider} from '@entrypoint/providers/session-provider';
 import {ReduxProvider} from '@entrypoint/providers/redux-provider';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {StatusBar} from 'expo-status-bar';
+import {LoadFontsProvider} from '@entrypoint/providers/load-fonts-provider';
 
 export default function RootNavigator() {
   return (
-    <SessionProvider>
-      <ReduxProvider>
-        <SafeAreaProvider>
-          <StatusBar style="auto" />
+    <LoadFontsProvider>
+      <SessionProvider>
+        <ReduxProvider>
+          <SafeAreaProvider>
+            <StatusBar style="auto" />
 
-          <Stack
-            screenOptions={{
-              headerShown: false,
-            }}>
-            <Stack.Screen name="(app)" />
-            <Stack.Screen name="auth" />
-          </Stack>
-        </SafeAreaProvider>
-      </ReduxProvider>
-    </SessionProvider>
+            <Stack
+              screenOptions={{
+                headerShown: false,
+              }}>
+              <Stack.Screen name="(app)" />
+              <Stack.Screen name="auth" />
+            </Stack>
+          </SafeAreaProvider>
+        </ReduxProvider>
+      </SessionProvider>
+    </LoadFontsProvider>
   );
 }
