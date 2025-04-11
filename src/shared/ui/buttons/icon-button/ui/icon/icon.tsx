@@ -1,15 +1,10 @@
-import {ColorValue} from 'react-native';
 import {SvgForkSpoon24DpIcon} from '@shared/assets/icons/components/actions/fork-spoon-24dp-icon';
 import {SvgFootprint24DpIcon} from '@shared/assets/icons/components/actions/footprint-24dp-icon';
 import {SvgPill24DpIcon} from '@shared/assets/icons/components/actions/pill-24dp-icon';
+import {IIconProps} from '@shared/ui/buttons/types';
 
 interface IIconType extends IIconProps {
   icon: 'feed' | 'walk' | 'pill';
-}
-
-interface IIconProps {
-  size: number;
-  color: ColorValue;
 }
 
 const icons = {

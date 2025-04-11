@@ -34,3 +34,12 @@ export interface IconButtonProps {
   buttonStyle?: StyleProp<ViewStyle>;
   children?: ReactNode;
 }
+
+export interface IIconProps {
+  size: number;
+  color: ColorValue;
+}
+
+export interface IIconRoundedButtonType extends IIconProps {
+  icon: 'add';
+}
