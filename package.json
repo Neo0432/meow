@@ -10,7 +10,7 @@
     "web": "expo start --web",
     "test": "jest --watchAll",
     "lint": "expo lint",
-    "svg:generate": "node ./node_modules/@svgr/cli/bin/svgr --ignore-existing src/shared/assets/icons"
+    "svg:transform": "node ./node_modules/@svgr/cli/bin/svgr --ignore-existing src/shared/assets/icons"
   },
   "jest": {
     "preset": "jest-expo"
