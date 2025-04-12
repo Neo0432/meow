@@ -6,7 +6,7 @@ import {SvgAccountCircle24Dp} from '@shared/assets/icons/components/navigation/a
 
 export default function TabLayout() {
   return (
-    <Tabs tabBar={CustomTabBar}>
+    <Tabs tabBar={CustomTabBar} screenOptions={{headerShown: false}}>
       <Tabs.Screen
         name="home"
         options={{title: 'Home', tabBarIcon: SvgHome24Dp}}

@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingInline: 64,
-    paddingTop: 30,
+    paddingTop: 16,
     paddingBottom: 16,
     borderTopRightRadius: 24,
     borderTopLeftRadius: 24,
@@ -21,6 +21,7 @@ export const styles = StyleSheet.create({
 
   background: {
     backgroundColor: colors.orange.orange100,
+    marginTop: -16,
   },
 
   button: {

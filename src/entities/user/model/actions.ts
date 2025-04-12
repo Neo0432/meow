@@ -1,5 +1,5 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
-import {IUserAuthDto} from '@entities/user/model/types';
+import {IUser, IUserAuthDto, IUserState} from '@entities/user/model/types';
 import {noneAuthClient} from '@shared/api/clients';
 import {signIn} from '@shared/hooks/use-session';
 
@@ -8,10 +8,17 @@ export const userSignIn = createAsyncThunk(
   async (userData: IUserAuthDto, {rejectWithValue}) => {
     try {
       //TODO: дописать пути когда появился бэк((
-      /*const response = await noneAuthClient.post('', userData);
+      /*const response = await noneAuthClient.post('/user/signin', userData);
       return response.data;*/
       await signIn('HelloUserToken');
-      return userData;
+      const response: IUser = {
+        ...userData,
+        name: '',
+        imageUrl: '',
+        phoneNumber: '',
+        id: '',
+      };
+      return response;
     } catch (e) {
       console.error(`[ERROR] Cant sign in user: ${e}`);
       return rejectWithValue(e);
@@ -25,10 +32,17 @@ export const userSignUp = createAsyncThunk(
     try {
       userData = {email: userData.email, password: userData.password};
       //TODO: дописать пути когда появился бэк((
-      /*const response = await noneAuthClient.post('', userData);
+      /*const response = await noneAuthClient.post('/user/signup', userData);
       return response.data;*/
       await signIn('HelloUserToken');
-      return userData;
+      const response: IUser = {
+        ...userData,
+        name: '',
+        imageUrl: '',
+        phoneNumber: '',
+        id: '',
+      };
+      return response;
     } catch (e) {
       console.error(`[ERROR] Cant sign in user: ${e}`);
       return rejectWithValue(e);
