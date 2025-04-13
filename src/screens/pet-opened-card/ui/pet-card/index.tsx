@@ -1,0 +1,30 @@
+import {View} from 'react-native';
+import {PetsInfo} from '@widgets/pet-info';
+import {PetsActionsRows} from '@features/pets';
+import {SafeAreaViewLayout} from '@entrypoint/layouts/safe-area-layout';
+import {Image} from 'expo-image';
+import {styles} from './style';
+import {pet} from '@mocks/pet';
+import {PetCardHeader} from '@entrypoint/headers/pet-card-header';
+
+export function PetCardOpened() {
+  return (
+    <>
+      <Image source={pet.imageSource} contentFit="cover" style={styles.image} />
+      <SafeAreaViewLayout>
+        <PetCardHeader />
+        <View style={styles.screen}>
+          <View style={styles.substrate}>
+            <PetsInfo pet={pet} />
+            <PetsActionsRows
+              petId={pet.id}
+              lastFeed={pet.lastFeed}
+              lastWalk={pet.lastWalk}
+              lastMedication={pet.lastMedical}
+            />
+          </View>
+        </View>
+      </SafeAreaViewLayout>
+    </>
+  );
+}

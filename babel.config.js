@@ -16,6 +16,7 @@ module.exports = function (api) {
             '@widgets': './src/widgets',
             '@screens': './src/screens',
             '@shared': './src/shared',
+            '@mocks': './src/mock-data',
           },
         },
       ],

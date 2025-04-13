@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     width: '100%',
     height: 56,
     borderRadius: 24,
-    backgroundColor: colors.orange.orange250,
+    backgroundColor: colors.orange.orange300,
     ...shadows.peachInput,
   },
   pressedStyle: {

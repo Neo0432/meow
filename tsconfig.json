@@ -10,7 +10,8 @@
       "@features/*": ["./src/features/*"],
       "@widgets/*": ["./src/widgets/*"],
       "@screens/*": ["./src/screens/*"],
-      "@shared/*": ["./src/shared/*"]
+      "@shared/*": ["./src/shared/*"],
+      "@mocks/*": ["./src/mock-data/"]
     },
     "jsx": "react-jsx"
   },

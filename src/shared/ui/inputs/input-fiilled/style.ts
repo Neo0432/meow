@@ -28,7 +28,7 @@ export const styles = StyleSheet.create({
 
   input: {
     ...typography.b1_itim_regular_16,
-    color: colors.orange.orange250,
+    color: colors.orange.orange300,
     paddingTop: -16,
     paddingLeft: -8,
     width: '100%',

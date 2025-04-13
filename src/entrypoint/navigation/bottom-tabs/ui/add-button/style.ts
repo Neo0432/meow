@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     left: '50%',
     transform: [{translateX: 32}],
 
-    backgroundColor: colors.orange.orange250,
+    backgroundColor: colors.orange.orange300,
   },
 
   addButtonPressed: {

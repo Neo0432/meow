@@ -32,6 +32,8 @@ export interface IconButtonProps {
   pressedColor?: ColorValue;
   disabledColor?: ColorValue;
   buttonStyle?: StyleProp<ViewStyle>;
+  pressedButtonStyle?: StyleProp<ViewStyle>;
+  disabledButtonStyle?: StyleProp<ViewStyle>;
   children?: ReactNode;
 }
 

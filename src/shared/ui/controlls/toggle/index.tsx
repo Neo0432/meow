@@ -13,10 +13,10 @@ export function ToggleControl({value, onChange}: IToggleControlProps) {
       onChange={() => onChange(!value)}
       thumbColor={value ? colors.blue.blue250 : colors.blue.blue200}
       trackColor={{
-        false: colors.orange.orange250,
-        true: colors.orange.orange250,
+        false: colors.orange.orange300,
+        true: colors.orange.orange300,
       }}
-      ios_backgroundColor={colors.orange.orange250}
+      ios_backgroundColor={colors.orange.orange300}
     />
   );
 }
