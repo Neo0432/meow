@@ -43,5 +43,5 @@ export interface IIconProps {
 }
 
 export interface IIconRoundedButtonType extends IIconProps {
-  icon: 'add';
+  icon: 'add' | 'camera';
 }

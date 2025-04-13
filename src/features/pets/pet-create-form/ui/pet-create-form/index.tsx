@@ -33,6 +33,7 @@ export function PetCreateForm() {
           control={control}
           render={({field: {value, onChange}}) => (
             <ImagePickerArea
+              type={'post'}
               mediaUrl={value || ''}
               setImageUrl={onChange}
               isAreaDisabled={formDisabled}

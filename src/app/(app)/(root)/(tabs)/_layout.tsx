@@ -1,4 +1,4 @@
-import {Slot, Tabs} from 'expo-router';
+import {Tabs} from 'expo-router';
 import React from 'react';
 import {CustomTabBar} from '@entrypoint/navigation/bottom-tabs';
 import {SvgHome24Dp} from '@shared/assets/icons/components/navigation/home-24dp';
@@ -13,7 +13,10 @@ export default function TabLayout() {
       />
       <Tabs.Screen
         name="profile"
-        options={{title: 'Profile', tabBarIcon: SvgAccountCircle24Dp}}
+        options={{
+          title: 'Profile',
+          tabBarIcon: SvgAccountCircle24Dp,
+        }}
       />
     </Tabs>
   );

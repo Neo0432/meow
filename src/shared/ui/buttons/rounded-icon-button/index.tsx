@@ -11,6 +11,7 @@ export interface RoundedIconButtonProps {
   initialStyle?: StyleProp<ViewStyle>;
   pressedStyle?: StyleProp<ViewStyle>;
   disabledStyle?: StyleProp<ViewStyle>;
+  iconSize?: number;
 }
 
 export function RoundedIconButton({
@@ -20,6 +21,7 @@ export function RoundedIconButton({
   pressedStyle,
   disabledStyle,
   disabled,
+  iconSize,
 }: RoundedIconButtonProps) {
   return (
     <Pressable
@@ -31,7 +33,11 @@ export function RoundedIconButton({
       ]}
       onPress={onPress}
       disabled={disabled}>
-      <Icon icon={icon} color={colors.grayscale.grayscale100} size={32} />
+      <Icon
+        icon={icon}
+        color={colors.grayscale.grayscale100}
+        size={iconSize || 24}
+      />
     </Pressable>
   );
 }

@@ -62,9 +62,9 @@ export const petCreateNewPet = createAsyncThunk(
     return {
       id: '123145',
       ...petData,
-      lastFeed: new Date().toString(),
-      lastWalk: new Date().toString(),
-      lastMedical: new Date().toString(),
+      lastFeed: new Date(),
+      lastWalk: new Date(),
+      lastMedical: new Date(),
     } as IPet;
   },
 );
