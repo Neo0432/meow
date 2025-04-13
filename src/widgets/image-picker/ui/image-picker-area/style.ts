@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
 
   placeholderText: {
     ...typography.h5_outfit_semibold_16,
-    color: colors.grayscale.grayscale700,
+    color: colors.grayscale.grayscale600,
   },
 
   image: {

@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
 
     borderRadius: 24,
     borderWidth: 2,
-    borderColor: colors.orange.orange250,
+    borderColor: colors.orange.orange300,
   },
 
   inner: {

@@ -9,17 +9,24 @@ export function IconButton({
   disabled,
   icon,
   iconSize = 24,
-  initialColor = colors.orange.orange250,
+  initialColor = colors.orange.orange300,
   pressedColor = colors.orange.orange500,
   disabledColor = colors.grayscale.grayscale500,
   buttonStyle,
+  pressedButtonStyle,
+  disabledButtonStyle,
   children,
 }: IconButtonProps) {
   return (
     <Pressable
       onPress={onPress}
       disabled={disabled}
-      style={[{flexDirection: 'row'}, buttonStyle]}>
+      style={({pressed}) => [
+        {flexDirection: 'row'},
+        buttonStyle,
+        pressed && pressedButtonStyle,
+        disabled && disabledButtonStyle,
+      ]}>
       {({pressed}) => {
         const iconColor = disabled
           ? disabledColor

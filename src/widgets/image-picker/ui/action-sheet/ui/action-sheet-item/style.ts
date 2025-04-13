@@ -12,7 +12,7 @@ export const style = StyleSheet.create({
   },
   text: {
     ...typography.h5_outfit_semibold_16,
-    color: colors.grayscale.grayscale700,
+    color: colors.grayscale.grayscale600,
   },
 
   textCansel: {

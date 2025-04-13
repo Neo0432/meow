@@ -6,3 +6,10 @@ export interface ModalScreenHeaderProps {
   onRightAction?: () => void;
   rightActionDisabled?: boolean;
 }
+
+export interface PetCardHeaderProps {
+  onGoBack?: () => void;
+  rightActionName?: string;
+  onRightAction?: () => void;
+  rightActionDisabled?: boolean;
+}

@@ -9,11 +9,11 @@ export interface IPet {
   chipNumber: string;
   medication: boolean;
   birthDate: string;
-  age: string;
+  age: number;
 
-  lastFeed: string;
-  lastWalk: string;
-  lastMedical: string;
+  lastFeed: Date;
+  lastWalk: Date;
+  lastMedical: Date;
 }
 
 export interface IPetState {

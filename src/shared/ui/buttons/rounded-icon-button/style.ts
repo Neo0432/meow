@@ -8,6 +8,6 @@ export const styles = StyleSheet.create({
     width: 64,
     height: 64,
     borderRadius: 64,
-    backgroundColor: colors.orange.orange250,
+    backgroundColor: colors.orange.orange300,
   },
 });
