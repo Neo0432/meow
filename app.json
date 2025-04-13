@@ -15,7 +15,11 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ],
+      "package": "com.neo0432.meow"
     },
     "web": {
       "bundler": "metro",
@@ -34,7 +38,8 @@
         }
       ],
       "expo-secure-store",
-      ["expo-font",
+      [
+        "expo-font",
         {
           "fonts": [
             "./src/shared/assets/fonts/itim/Itim-Regular.ttf",
@@ -45,10 +50,25 @@
             "./src/shared/assets/fonts/outfit/Outfit-SemiBold.ttf"
           ]
         }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "The app accesses your photos to let you upload a photo of your of your pet.",
+          "cameraPermission": "The app accesses your camera to let you create a photo of your of your pet."
+        }
       ]
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "4da0f1e9-5924-40f1-8f1c-4152a3b2389c"
+      }
     }
   }
 }

@@ -1,5 +1,7 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import {authClient} from '@shared/api/clients';
+import {IPet} from '@entities/pet/model/types';
+import {ICreatePetFormData} from '@features/pets/pet-create-form/model/types';
 
 export const petActionFeed = createAsyncThunk(
   'pet/action/feed',
@@ -48,5 +50,21 @@ export const petActionMedication = createAsyncThunk(
       );
       return rejectWithValue(e);
     }
+  },
+);
+
+export const petCreateNewPet = createAsyncThunk(
+  'pet/create/new-pet',
+  async (petData: ICreatePetFormData, {rejectWithValue}) => {
+    console.log(petData);
+
+    //TODO: Fix it
+    return {
+      id: '123145',
+      ...petData,
+      lastFeed: new Date().toString(),
+      lastWalk: new Date().toString(),
+      lastMedical: new Date().toString(),
+    } as IPet;
   },
 );

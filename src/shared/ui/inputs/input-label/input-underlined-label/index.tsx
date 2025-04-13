@@ -3,7 +3,7 @@ import {PropsWithChildren} from 'react';
 import {styles} from './style';
 import {InputLabelProps} from '@shared/ui/inputs/input-label/model/types';
 
-export function InputLabel({
+export function InputUnderlinedLabel({
   customStyles,
   children,
 }: PropsWithChildren<InputLabelProps>) {

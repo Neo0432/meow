@@ -1,6 +1,6 @@
 import {createSelector} from 'reselect';
 import {RootState} from '@shared/store';
-import {IUserState} from '@entities/user/model/types';
+import {IUserState} from './types';
 
 export const selectUser = createSelector(
   [(state: RootState) => state.user],

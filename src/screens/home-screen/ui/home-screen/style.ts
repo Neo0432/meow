@@ -3,7 +3,8 @@ import {colors} from '@shared/styles/colors';
 import {typography} from '@shared/styles/typography';
 
 export const styles = StyleSheet.create({
-  screen: {
+  screen: {gap: 8, flex: 1},
+  content: {
     flex: 1,
     width: '100%',
     backgroundColor: colors.orange.orange100,
