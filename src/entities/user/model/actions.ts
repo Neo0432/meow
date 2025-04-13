@@ -1,6 +1,5 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
-import {IUser, IUserAuthDto, IUserState} from '@entities/user/model/types';
-import {noneAuthClient} from '@shared/api/clients';
+import {IUser, IUserAuthDto} from './types';
 import {signIn} from '@shared/hooks/use-session';
 
 export const userSignIn = createAsyncThunk(

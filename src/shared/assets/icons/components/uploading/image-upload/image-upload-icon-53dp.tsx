@@ -1,0 +1,10 @@
+import Svg, { Path } from 'react-native-svg';
+import type { SvgProps } from 'react-native-svg';
+export const SvgImageUploadIcon53Dp = (props: SvgProps) => (
+  <Svg width={54} height={53} fill="none" {...props}>
+    <Path
+      d="M23.6875 39.75V12.7531L15.075 21.3656L10.4375 16.5625L27 0L43.5625 16.5625L38.925 21.3656L30.3125 12.7531V39.75H23.6875ZM7.125 53C5.30312 53 3.74349 52.3513 2.44609 51.0539C1.1487 49.7565 0.5 48.1969 0.5 46.375V36.4375H7.125V46.375H46.875V36.4375H53.5V46.375C53.5 48.1969 52.8513 49.7565 51.5539 51.0539C50.2565 52.3513 48.6969 53 46.875 53H7.125Z"
+      fill="#787674"
+    />
+  </Svg>
+);

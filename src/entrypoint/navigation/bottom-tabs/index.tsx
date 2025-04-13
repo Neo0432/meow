@@ -16,7 +16,13 @@ export function CustomTabBar({
   return (
     <View style={styles.background}>
       <View style={styles.container}>
-        {currentRouteName === 'home' && <AddButton onPress={() => {}} />}
+        {currentRouteName === 'home' && (
+          <AddButton
+            onPress={() => {
+              navigation.navigate('create-pet-card');
+            }}
+          />
+        )}
         {state.routes.map((route, index) => {
           const {options} = descriptors[route.key];
           const size = 24;

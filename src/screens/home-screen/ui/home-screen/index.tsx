@@ -8,6 +8,7 @@ import {useAppSelector} from '@shared/store';
 import {selectAllPets} from '@entities/pet/model/selectors';
 import {PostPlaceholder} from '@screens/home-screen/ui/placeholder';
 import {UserHeader} from '@features/user/user-header';
+import {DarkBgLayout} from '../../../../entrypoint/layouts/dark-bg-layout';
 
 export default function HomeScreen() {
   let pets: IPet[] = useAppSelector(selectAllPets);
@@ -17,11 +18,11 @@ export default function HomeScreen() {
   }
 
   return (
-    <View style={{flex: 1, backgroundColor: colors.orange.orange500}}>
-      <SafeAreaView style={{flex: 1, gap: 8}}>
+    <DarkBgLayout>
+      <View style={styles.screen}>
         <UserHeader />
 
-        <View style={styles.screen}>
+        <View style={styles.content}>
           {pets.length ? (
             <ScrollView contentContainerStyle={styles.scroll}>
               {pets.map(pet => (
@@ -36,8 +37,8 @@ export default function HomeScreen() {
             <PostPlaceholder />
           )}
         </View>
-      </SafeAreaView>
-    </View>
+      </View>
+    </DarkBgLayout>
   );
 }
 

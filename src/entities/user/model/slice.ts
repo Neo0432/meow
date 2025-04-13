@@ -1,6 +1,6 @@
-import {IUserState} from '@entities/user/model/types';
+import {IUserState} from './types';
 import {createSlice} from '@reduxjs/toolkit';
-import {userSignIn, userSignUp} from '@entities/user/model/actions';
+import {userSignIn, userSignUp} from './actions';
 
 const initialState: IUserState = {
   user: {

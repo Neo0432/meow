@@ -2,7 +2,7 @@ import {View} from 'react-native';
 import {Controller} from 'react-hook-form';
 import {useLoginForm} from '@features/auth/signin-form/hooks/use-login-form';
 import {InputFilled} from '@shared/ui/inputs/input-fiilled';
-import {InputLabel} from '@shared/ui/inputs/input-label';
+import {InputFilledLabel} from '@shared/ui/inputs/input-label';
 import {ButtonsArea} from '@shared/ui/auth/buttons-area';
 import {styles} from './style';
 import {useRouter} from 'expo-router';
@@ -26,7 +26,7 @@ export function SignInForm() {
           control={control}
           render={({field}) => (
             <InputFilled
-              title={<InputLabel>EMAIL</InputLabel>}
+              title={<InputFilledLabel>EMAIL</InputFilledLabel>}
               placeholder="Enter email"
               value={field.value}
               onChange={field.onChange}
@@ -39,7 +39,7 @@ export function SignInForm() {
           control={control}
           render={({field}) => (
             <InputFilled
-              title={<InputLabel>PASSWORD</InputLabel>}
+              title={<InputFilledLabel>PASSWORD</InputFilledLabel>}
               iconType={'password'}
               placeholder="Enter password"
               value={field.value}
