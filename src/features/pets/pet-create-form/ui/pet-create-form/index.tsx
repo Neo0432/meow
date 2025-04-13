@@ -10,16 +10,19 @@ import {useState} from 'react';
 import {ScrollView} from 'react-native';
 import {ImagePickerArea} from '@widgets/image-picker/ui/image-picker-area';
 import {UIButtonWithText} from '@shared/ui/buttons/button-with-text';
+import {useSubmitAction} from '@features/pets/pet-create-form/hooks/use-submit-action';
 
 export function PetCreateForm() {
   const methods = useCreatePetsForm();
   const {
     control,
     formState: {isValid, isLoading, isSubmitting},
+    handleSubmit,
   } = methods;
 
   const [showPicker, setShowPicker] = useState(false);
   const formDisabled = isLoading || isSubmitting;
+  const onSubmit = useSubmitAction();
 
   return (
     <FormProvider {...methods}>
@@ -114,7 +117,10 @@ export function PetCreateForm() {
             name="chipNumber"
           />
         </FieldsCategory>
-        <UIButtonWithText isLoading={formDisabled} onPress={() => {}}>
+        <UIButtonWithText
+          isLoading={formDisabled}
+          disabled={!isValid}
+          onPress={handleSubmit(onSubmit)}>
           Create pet card
         </UIButtonWithText>
       </ScrollView>

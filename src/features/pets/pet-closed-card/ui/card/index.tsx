@@ -1,6 +1,6 @@
 import {PetClosedCard} from '@widgets/pet-card';
 import {IPet} from '@entities/pet/model/types';
-import {usePetActions} from '@features/pet-closed-card/hooks/use-pet-actions';
+import {usePetActions} from '../../hooks/use-pet-actions';
 
 interface PetClosedWithActionsProps {
   pet: IPet;

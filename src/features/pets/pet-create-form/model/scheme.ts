@@ -1,20 +1,18 @@
 import * as yup from 'yup';
 
-export const petCreateFormSchema = yup.object().shape({
-  imageUrl: yup.string().nullable().notRequired(),
+export const petCreateFormScheme = yup.object().shape({
+  imageUrl: yup.string().required(),
   name: yup.string().required(),
-  type: yup.string().nullable().notRequired(),
-  gender: yup.string().oneOf(['male', 'female']).notRequired(),
+  type: yup.string().required(),
+  gender: yup.string().oneOf(['male', 'female']).required(),
   vaccine: yup.bool().default(false).required(),
   dateOfBirth: yup
-    .string()
-    .transform(value => (value === '' ? null : value))
-    .matches(
-      /^(?:\d{2}\.\d{2}\.\d{4})?$/,
-      'Enter a valid date in format dd.mm.yyyy',
-    )
-    .nullable()
-    .notRequired(),
-  breed: yup.string().nullable().notRequired(),
-  chipNumber: yup.string().notRequired(),
+    .date()
+    .transform((value, originalValue) => {
+      const date = new Date(originalValue);
+      return isNaN(date.getTime()) ? '' : date;
+    })
+    .required(),
+  breed: yup.string().required(),
+  chipNumber: yup.string().required(),
 });

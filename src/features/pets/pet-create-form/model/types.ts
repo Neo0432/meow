@@ -1,15 +1,15 @@
 import * as yup from 'yup';
-import {petCreateFormSchema} from '@features/pets/pet-create-form/model/scheme';
+import {petCreateFormScheme} from '@features/pets/pet-create-form/model/scheme';
 
-export type ICreateFormData = yup.InferType<typeof petCreateFormSchema>;
+// export type ICreatePetFormData = yup.InferType<typeof petCreateFormScheme>;
 
-// export interface ICreateFormData {
-//   imageUrl: string | null;
-//   name: string;
-//   type: string | null;
-//   gender?: 'male' | 'female';
-//   vaccine: boolean;
-//   dateOfBirth: string | null;
-//   breed: string | null;
-//   chipNumber: string | null;
-// }
+export interface ICreatePetFormData {
+  imageUrl: string;
+  name: string;
+  type: string;
+  gender: 'male' | 'female';
+  vaccine: boolean;
+  dateOfBirth: Date | string;
+  breed: string;
+  chipNumber: string;
+}

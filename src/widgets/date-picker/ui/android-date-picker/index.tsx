@@ -1,5 +1,4 @@
 import {DateTimePickerAndroid} from '@react-native-community/datetimepicker';
-import dayjs from 'dayjs';
 import {ControllerRenderProps, FieldValues} from 'react-hook-form';
 
 export function AndroidDatePicker({
