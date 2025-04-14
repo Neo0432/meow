@@ -11,3 +11,8 @@ export const selectAllPets = createSelector(
   [selectPets],
   (petState: IPetState) => petState.pets ?? [],
 );
+
+export const selectCurrentPet = createSelector(
+  [selectPets],
+  (petState: IPetState) => petState.selectedPet,
+);

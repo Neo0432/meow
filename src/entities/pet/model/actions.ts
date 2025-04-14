@@ -68,3 +68,31 @@ export const petCreateNewPet = createAsyncThunk(
     } as IPet;
   },
 );
+
+export const petGetPetById = createAsyncThunk(
+  'pet/get/petById',
+  async (petId: string, {rejectWithValue}) => {
+    try {
+      const response = await authClient.get(`/pet/${petId}`);
+
+      if (response) return response.data;
+    } catch (e) {
+      console.error(`[ERROR] Can't get pet bu id: ${petId}, ${e}`);
+      return rejectWithValue(e);
+    }
+  },
+);
+
+export const petGetAll = createAsyncThunk(
+  'pet/getAll',
+  async (_: any, {rejectWithValue}) => {
+    try {
+      const response = await authClient.get('/pet/all');
+
+      if (response) return response.data;
+    } catch (e) {
+      console.error(`[ERROR] Can't get all pets: ${e}`);
+      return rejectWithValue(e);
+    }
+  },
+);

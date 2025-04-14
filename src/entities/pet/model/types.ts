@@ -18,6 +18,7 @@ export interface IPet {
 
 export interface IPetState {
   pets: IPet[];
+  selectedPet: IPet;
 }
 
 // id: '',

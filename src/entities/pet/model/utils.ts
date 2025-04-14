@@ -9,12 +9,6 @@ export function updatePetField<T extends keyof IPet>(
   const index = state.pets.findIndex(pet => pet.id === id);
   if (index === -1) return;
 
-  console.log(index);
-  console.log({
-    ...state.pets[index],
-    [field]: value,
-  });
-
   state.pets[index] = {
     ...state.pets[index],
     [field]: value,

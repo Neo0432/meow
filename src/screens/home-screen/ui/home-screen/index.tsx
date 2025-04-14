@@ -9,10 +9,12 @@ import {UserHeader} from '@features/user/user-header';
 import {DarkBgLayout} from '@entrypoint/layouts/dark-bg-layout';
 //TODO: Remove mocks
 import {petArray} from '@mocks/pet';
+import {useRouter} from 'expo-router';
 
 export default function HomeScreen() {
   let pets: IPet[] = useAppSelector(selectAllPets);
 
+  const router = useRouter();
   //TODO: Remove mocks
   if (!pets.length) {
     pets = petArray;
@@ -29,7 +31,9 @@ export default function HomeScreen() {
               {pets.map(pet => (
                 <PetClosedCardWithActions
                   pet={pet}
-                  onPress={() => {}}
+                  onPress={() => {
+                    router.push(`/edit-pet-card/${pet.id}`);
+                  }}
                   key={pet.id}
                 />
               ))}
