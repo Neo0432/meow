@@ -11,6 +11,9 @@ import {ScrollView} from 'react-native';
 import {ImagePickerArea} from '@widgets/image-picker/ui/image-picker-area';
 import {UIButtonWithText} from '@shared/ui/buttons/button-with-text';
 import {useSubmitAction} from '@features/pets/pet-create-form/hooks/use-submit-action';
+import {ICreatePetFormData} from '@features/pets/pet-create-form/model/types';
+import {petCreateNewPet} from '@entities/pet/model/actions';
+import {useAppDispatch} from '@shared/store';
 
 export function PetCreateForm() {
   const methods = useCreatePetsForm();
@@ -19,10 +22,16 @@ export function PetCreateForm() {
     formState: {isValid, isLoading, isSubmitting},
     handleSubmit,
   } = methods;
+  const dispatch = useAppDispatch();
 
   const [showPicker, setShowPicker] = useState(false);
   const formDisabled = isLoading || isSubmitting;
-  const onSubmit = useSubmitAction();
+  // const onSubmit = useSubmitAction();
+  const onSubmit = async (data: ICreatePetFormData) => {
+    console.log(data);
+
+    dispatch(petCreateNewPet(data));
+  };
 
   return (
     <FormProvider {...methods}>
@@ -67,10 +76,11 @@ export function PetCreateForm() {
             name="type"
           />
           <Controller
+            control={control}
             render={({field: {value, onChange}}) => (
               <GenderSelectorField value={value} onChange={onChange} />
             )}
-            name="gender"
+            name="sex"
           />
           <Controller
             control={control}
@@ -89,7 +99,7 @@ export function PetCreateForm() {
                 loadingForm={formDisabled}
               />
             )}
-            name="dateOfBirth"
+            name="birthDate"
           />
           <Controller
             control={control}

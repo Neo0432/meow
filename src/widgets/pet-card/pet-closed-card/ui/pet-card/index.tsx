@@ -1,4 +1,4 @@
-import {TouchableWithoutFeedback, View} from 'react-native';
+import {TouchableOpacity, View} from 'react-native';
 import {PetImage} from '@widgets/pet-card/pet-closed-card/ui/pet-image';
 import {PetActions} from '@widgets/pet-card/pet-closed-card/ui/pet-actions';
 import {styles} from './style';
@@ -13,9 +13,12 @@ export function PetClosedCard({
 }: PetClosedCardProps) {
   return (
     <View style={styles.card}>
-      <TouchableWithoutFeedback onPress={onPress}>
+      <TouchableOpacity
+        activeOpacity={0.9}
+        onPress={onPress}
+        style={styles.imagePressable}>
         <PetImage pet={pet} />
-      </TouchableWithoutFeedback>
+      </TouchableOpacity>
       <PetActions onFeed={onFeed} onWalk={onWalk} onMedication={onMedication} />
     </View>
   );

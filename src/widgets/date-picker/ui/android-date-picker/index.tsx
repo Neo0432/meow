@@ -12,7 +12,7 @@ export function AndroidDatePicker({
     is24Hour: true,
     onChange: (_, selectedDate) => {
       if (selectedDate) {
-        field.onChange(selectedDate);
+        field.onChange(String(selectedDate));
       }
     },
   });

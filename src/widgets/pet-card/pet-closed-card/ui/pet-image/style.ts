@@ -3,6 +3,12 @@ import {colors} from '@shared/styles/colors';
 import {typography} from '@shared/styles/typography';
 
 export const styles = StyleSheet.create({
+  component: {
+    flexShrink: 1,
+    height: '100%',
+    flexDirection: 'row',
+    flex: 1,
+  },
   image: {
     position: 'relative',
 

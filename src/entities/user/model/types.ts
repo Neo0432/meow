@@ -15,3 +15,8 @@ export interface IUserAuthDto {
   email: string;
   password: string;
 }
+
+export interface IUserAuthResponseDto {
+  token: string;
+  user: IUser;
+}

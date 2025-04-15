@@ -7,7 +7,7 @@ import {
   petCreateNewPet,
   petGetAll,
   petGetPetById,
-} from '@entities/pet/model/actions';
+} from './actions';
 import {updatePetField} from '@entities/pet/model/utils';
 
 const initialState: IPetState = {pets: [] as IPet[], selectedPet: {} as IPet};
@@ -19,7 +19,7 @@ const petsSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(petCreateNewPet.fulfilled, (state, action) => {
-        state.pets.push(action);
+        state.pets.push(action.payload);
       })
 
       .addCase(petActionFeed.fulfilled, (state, action) => {

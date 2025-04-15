@@ -7,9 +7,9 @@ export interface ICreatePetFormData {
   imageUrl: string;
   name: string;
   type: string;
-  gender: 'male' | 'female';
+  sex: 'Male' | 'Female';
   vaccine: boolean;
-  dateOfBirth: Date | string;
+  birthDate: string;
   breed: string;
   chipNumber: string;
 }

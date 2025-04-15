@@ -4,7 +4,6 @@ import {PetsActionsRows} from '@features/pets';
 import {SafeAreaViewLayout} from '@entrypoint/layouts/safe-area-layout';
 import {Image} from 'expo-image';
 import {styles} from './style';
-import {pet} from '@mocks/pet';
 import {PetCardHeader} from '@entrypoint/headers/pet-card-header';
 import {useLocalSearchParams} from 'expo-router';
 import {useAppDispatch, useAppSelector} from '@shared/store';
@@ -13,6 +12,7 @@ import {useEffect} from 'react';
 import {petGetPetById} from '@entities/pet/model/actions';
 
 export function PetCardOpened() {
+  console.log('PetCardOpened');
   const {id} = useLocalSearchParams<{id: string}>();
   const dispatch = useAppDispatch();
 

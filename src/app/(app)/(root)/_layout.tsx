@@ -5,8 +5,8 @@ export default function AppNavigator() {
     <Stack screenOptions={{headerShown: false}}>
       <Stack.Screen name="(tabs)" />
       <Stack.Screen name="create-pet-card" />
-      <Stack.Screen name="edit-pet-card" />
-      <Stack.Screen name="pet-card" />
+      <Stack.Screen name="edit-pet-card/[petId]" />
+      <Stack.Screen name="pet-card/[petId]" />
     </Stack>
   );
 }

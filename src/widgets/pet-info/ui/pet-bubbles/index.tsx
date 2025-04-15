@@ -4,20 +4,20 @@ import {Bubble} from '@shared/ui/bubbles';
 
 export function PetBubbles({
   age,
-  sex = 'male',
+  sex = 'Male',
   vaccine,
 }: {
   age: number;
-  sex?: 'male' | 'female';
+  sex?: 'Male' | 'Female';
   vaccine: boolean;
 }) {
-  const sexValue = sex === 'female' ? 'girl' : 'boy';
+  const sexValue = sex === 'Female' ? 'girl' : 'boy';
 
   return (
     <View style={styles.container}>
-      <Bubble title="age" value={age.toString()} color="blue" />
+      <Bubble title="age" value={age?.toString()} color="blue" />
       <Bubble title="sex" value={sexValue} color="orange" />
-      <Bubble title="vaccine" value={String(vaccine)} color="green" />
+      <Bubble title="vaccine" value={String(vaccine || '')} color="green" />
     </View>
   );
 }

@@ -4,15 +4,9 @@ export const petCreateFormScheme = yup.object().shape({
   imageUrl: yup.string().required(),
   name: yup.string().required(),
   type: yup.string().required(),
-  gender: yup.string().oneOf(['male', 'female']).required(),
+  sex: yup.string().oneOf(['Male', 'Female']).required(),
   vaccine: yup.bool().default(false).required(),
-  dateOfBirth: yup
-    .date()
-    .transform((value, originalValue) => {
-      const date = new Date(originalValue);
-      return isNaN(date.getTime()) ? '' : date;
-    })
-    .required(),
+  birthDate: yup.string().required(),
   breed: yup.string().required(),
   chipNumber: yup.string().required(),
 });

@@ -5,7 +5,7 @@ export interface IPet {
   name: string;
   type: string;
   breed: string;
-  sex?: 'male' | 'female';
+  sex?: 'Male' | 'Female';
   chipNumber: string;
   medication: boolean;
   birthDate: string;
