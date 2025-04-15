@@ -2,9 +2,9 @@ import {ActionRow} from '@features/pets/pets-actions-rows/ui/action-row';
 import {usePetActions} from '@shared/hooks/use-pet-actions';
 
 interface IPetActionRowProps {
-  lastFeed: Date;
-  lastWalk: Date;
-  lastMedication: Date;
+  lastFeed: string;
+  lastWalk: string;
+  lastMedication: string;
 
   petId: string;
 }

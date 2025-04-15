@@ -6,7 +6,7 @@ import {getHoursSince} from '@features/pets/pets-actions-rows/lib/get-hours-sinc
 export interface ActionRowProps {
   actionName: string;
   icon: 'feed' | 'walk' | 'pill';
-  value?: Date;
+  value?: string;
   onActionClick: () => void;
   buttonDisabled?: boolean;
 }

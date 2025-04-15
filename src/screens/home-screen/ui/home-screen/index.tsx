@@ -12,20 +12,15 @@ import {petArray} from '@mocks/pet';
 import {useRouter} from 'expo-router';
 import {useEffect} from 'react';
 import {petGetAll} from '@entities/pet/model/actions';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function HomeScreen() {
   const router = useRouter();
 
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    const a = AsyncStorage.removeItem('root');
-  }, []);
-
-  useEffect(() => {
-    dispatch(petGetAll());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(petGetAll());
+  // }, [dispatch]);
 
   let pets: IPet[] = useAppSelector(selectAllPets);
 

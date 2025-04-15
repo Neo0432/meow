@@ -10,6 +10,7 @@ import {useAppDispatch, useAppSelector} from '@shared/store';
 import {selectCurrentPet} from '@entities/pet/model/selectors';
 import {useEffect} from 'react';
 import {petGetPetById} from '@entities/pet/model/actions';
+import {pet as petInfo} from '@mocks/pet';
 
 export function PetCardOpened() {
   console.log('PetCardOpened');
@@ -20,7 +21,9 @@ export function PetCardOpened() {
     dispatch(petGetPetById(id));
   }, [dispatch, id]);
 
-  const pet = useAppSelector(selectCurrentPet);
+  let pet = useAppSelector(selectCurrentPet);
+
+  if (!pet.id) pet = petInfo;
   return (
     <>
       <Image source={pet.imageSource} contentFit="cover" style={styles.image} />

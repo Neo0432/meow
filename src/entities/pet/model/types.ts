@@ -11,9 +11,9 @@ export interface IPet {
   birthDate: string;
   age: number;
 
-  lastFeed: Date;
-  lastWalk: Date;
-  lastMedical: Date;
+  lastFeed: string;
+  lastWalk: string;
+  lastMedical: string;
 }
 
 export interface IPetState {
