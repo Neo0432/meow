@@ -6,7 +6,7 @@ import {styles} from './styles';
 import {useRouter} from 'expo-router';
 import {PetCardHeaderProps} from '@entrypoint/headers/model/types';
 
-export function PetCardHeader({onGoBack}: PetCardHeaderProps) {
+export function PetCardHeader({onGoBack, onRightAction}: PetCardHeaderProps) {
   const router = useRouter();
 
   const iconColor = colors.grayscale.grayscale700;
@@ -25,7 +25,7 @@ export function PetCardHeader({onGoBack}: PetCardHeaderProps) {
           <SvgGoBackArrowIcon24Dp color={pressed ? iconPressed : iconColor} />
         )}
       </Pressable>
-      <Pressable>
+      <Pressable onPress={onRightAction}>
         {({pressed}) => (
           <SvgEditIcon24Dp color={pressed ? iconPressed : iconColor} />
         )}

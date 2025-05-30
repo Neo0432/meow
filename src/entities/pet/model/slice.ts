@@ -5,10 +5,12 @@ import {
   petActionMedication,
   petActionWalk,
   petCreateNewPet,
-} from '@entities/pet/model/actions';
+  petGetAll,
+  petGetPetById,
+} from './actions';
 import {updatePetField} from '@entities/pet/model/utils';
 
-const initialState: IPetState = {pets: [] as IPet[]};
+const initialState: IPetState = {pets: [] as IPet[], selectedPet: {} as IPet};
 
 const petsSlice = createSlice({
   name: 'pets',
@@ -17,7 +19,7 @@ const petsSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(petCreateNewPet.fulfilled, (state, action) => {
-        state.pets.push(action);
+        state.pets.push(action.payload);
       })
 
       .addCase(petActionFeed.fulfilled, (state, action) => {
@@ -37,6 +39,7 @@ const petsSlice = createSlice({
           action.payload.lastWalk,
         );
       })
+
       .addCase(petActionMedication.fulfilled, (state, action) => {
         updatePetField(
           state,
@@ -44,6 +47,14 @@ const petsSlice = createSlice({
           'lastMedical',
           action.payload.lastMedication,
         );
+      })
+
+      .addCase(petGetPetById.fulfilled, (state, action) => {
+        state.selectedPet = action.payload;
+      })
+
+      .addCase(petGetAll.fulfilled, (state, action) => {
+        state.pets = action.payload;
       });
   },
 });

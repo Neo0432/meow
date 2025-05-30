@@ -1,16 +1,27 @@
-import {ScrollView, View} from 'react-native';
+import {FlatList, ScrollView, View} from 'react-native';
 import {styles} from './style';
 import {PetClosedCardWithActions} from '@features/pets';
 import {IPet} from '@entities/pet/model/types';
-import {useAppSelector} from '@shared/store';
+import {useAppDispatch, useAppSelector} from '@shared/store';
 import {selectAllPets} from '@entities/pet/model/selectors';
 import {PostPlaceholder} from '@screens/home-screen/ui/placeholder';
 import {UserHeader} from '@features/user/user-header';
 import {DarkBgLayout} from '@entrypoint/layouts/dark-bg-layout';
 //TODO: Remove mocks
 import {petArray} from '@mocks/pet';
+import {useRouter} from 'expo-router';
+import {useEffect} from 'react';
+import {petGetAll} from '@entities/pet/model/actions';
 
 export default function HomeScreen() {
+  const router = useRouter();
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(petGetAll());
+  }, [dispatch]);
+
   let pets: IPet[] = useAppSelector(selectAllPets);
 
   //TODO: Remove mocks
@@ -25,15 +36,18 @@ export default function HomeScreen() {
 
         <View style={styles.content}>
           {pets.length ? (
-            <ScrollView contentContainerStyle={styles.scroll}>
-              {pets.map(pet => (
+            <FlatList
+              data={pets}
+              renderItem={({item: pet}) => (
                 <PetClosedCardWithActions
                   pet={pet}
-                  onPress={() => {}}
+                  onPress={() => {
+                    router.push(`../pet-card/${pet.id}`);
+                  }}
                   key={pet.id}
                 />
-              ))}
-            </ScrollView>
+              )}
+              contentContainerStyle={styles.scroll}></FlatList>
           ) : (
             <PostPlaceholder />
           )}

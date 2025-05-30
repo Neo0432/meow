@@ -11,19 +11,17 @@ export default function RootNavigator() {
     <GestureHandlerRootView>
       <LoadFontsProvider>
         <SessionProvider>
-          <ReduxProvider>
-            <SafeAreaProvider>
-              <StatusBar style="auto" />
+          <SafeAreaProvider>
+            <StatusBar style="auto" />
 
-              <Stack
-                screenOptions={{
-                  headerShown: false,
-                }}>
-                <Stack.Screen name="index" />
-                <Stack.Screen name="auth" />
-              </Stack>
-            </SafeAreaProvider>
-          </ReduxProvider>
+            <Stack
+              screenOptions={{
+                headerShown: false,
+              }}>
+              <Stack.Screen name="index" />
+              <Stack.Screen name="auth" />
+            </Stack>
+          </SafeAreaProvider>
         </SessionProvider>
       </LoadFontsProvider>
     </GestureHandlerRootView>

@@ -2,13 +2,18 @@ import {createSelector} from 'reselect';
 import {RootState} from '@shared/store';
 import {IUserState} from './types';
 
-export const selectUser = createSelector(
+export const selectUserState = createSelector(
   [(state: RootState) => state.user],
   (userState: IUserState) => ({...userState}),
 );
 
+export const selectUser = createSelector(
+  [selectUserState],
+  (userState: IUserState) => userState.user,
+);
+
 export const selectUserHeader = createSelector(
-  [selectUser],
+  [selectUserState],
   (userState: IUserState) => ({
     id: userState.user.id,
     name: userState.user.name,

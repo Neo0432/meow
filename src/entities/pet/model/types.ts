@@ -1,23 +1,26 @@
 export interface IPet {
   id: string;
+
+  //TODO Rename to imageUrl
   imageSource: string;
 
   name: string;
   type: string;
   breed: string;
-  sex?: 'male' | 'female';
+  sex?: 'Male' | 'Female';
   chipNumber: string;
   medication: boolean;
   birthDate: string;
   age: number;
 
-  lastFeed: Date;
-  lastWalk: Date;
-  lastMedical: Date;
+  lastFeed: string;
+  lastWalk: string;
+  lastMedical: string;
 }
 
 export interface IPetState {
   pets: IPet[];
+  selectedPet: IPet;
 }
 
 // id: '',

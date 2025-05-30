@@ -13,6 +13,7 @@ export function UIButtonBase({
   return (
     <Pressable
       onPress={onPress}
+      disabled={disabled}
       style={({pressed}) => [
         styles.button,
         initialStyle,

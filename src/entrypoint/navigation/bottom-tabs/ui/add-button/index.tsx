@@ -8,6 +8,7 @@ export function AddButton({onPress}: {onPress: () => void}) {
       onPress={onPress}
       initialStyle={styles.addButton}
       pressedStyle={styles.addButtonPressed}
+      iconSize={32}
     />
   );
 }

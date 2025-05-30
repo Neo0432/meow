@@ -4,9 +4,10 @@ import {
   ControllerRenderProps,
   FieldValues,
 } from 'react-hook-form';
+import {ICreatePetFormData} from '@features/pets/pet-create-form/model/types';
 
 export interface DatePickerProps {
-  field: ControllerRenderProps<FieldValues, string>;
+  field: ControllerRenderProps<ICreatePetFormData>;
   loadingForm: boolean;
   showPicker: boolean;
   setShowPicker: Dispatch<SetStateAction<boolean>>;

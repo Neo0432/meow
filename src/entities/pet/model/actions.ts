@@ -1,7 +1,8 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import {authClient} from '@shared/api/clients';
-import {IPet} from '@entities/pet/model/types';
+import {IPet} from './types';
 import {ICreatePetFormData} from '@features/pets/pet-create-form/model/types';
+import {AxiosResponse} from 'axios';
 
 export const petActionFeed = createAsyncThunk(
   'pet/action/feed',
@@ -29,7 +30,7 @@ export const petActionWalk = createAsyncThunk(
     try {
       const response = await authClient.post(`/pets/walk/${petId}`);
 
-      if (response) return response.data;
+      return response.data;
     } catch (e) {
       console.error(`[ERROR] Can't post request on walk for ${petId}: ${e}`);
       return rejectWithValue(e);
@@ -43,7 +44,7 @@ export const petActionMedication = createAsyncThunk(
     try {
       const response = await authClient.post(`/pets/medication/${petId}`);
 
-      if (response) return response.data;
+      return response.data;
     } catch (e) {
       console.error(
         `[ERROR] Can't post request on medication for ${petId}: ${e}`,
@@ -57,14 +58,57 @@ export const petCreateNewPet = createAsyncThunk(
   'pet/create/new-pet',
   async (petData: ICreatePetFormData, {rejectWithValue}) => {
     console.log(petData);
+    try {
+      const response: AxiosResponse<IPet> = await authClient.post(
+        '/pet/create-new',
+        petData,
+      );
 
-    //TODO: Fix it
-    return {
-      id: '123145',
-      ...petData,
-      lastFeed: new Date().toString(),
-      lastWalk: new Date().toString(),
-      lastMedical: new Date().toString(),
-    } as IPet;
+      if (response) {
+        console.log('response');
+        console.log(response?.data);
+      }
+      //TODO: Fix it
+      // return {
+      //   id: '123145',
+      //   ...petData,
+      //   lastFeed: new Date().toISOString(),
+      //   lastWalk: new Date().toISOString(),
+      //   lastMedical: new Date().toISOString(),
+      // } as IPet;
+      return response.data;
+    } catch (e) {
+      console.error(`[ERROR] Cant create pet with data ${petData}: ${e}`);
+
+      return rejectWithValue(e);
+    }
+  },
+);
+
+export const petGetPetById = createAsyncThunk(
+  'pet/get/petById',
+  async (petId: string, {rejectWithValue}) => {
+    try {
+      const response = await authClient.get(`/pet/${petId}`);
+
+      return response.data;
+    } catch (e) {
+      console.error(`[ERROR] Can't get pet by id: ${petId}, ${e}`);
+      return rejectWithValue(e);
+    }
+  },
+);
+
+export const petGetAll = createAsyncThunk(
+  'pet/getAll',
+  async (_, {rejectWithValue}) => {
+    try {
+      const response = await authClient.get('/pet/all');
+
+      return response.data;
+    } catch (e) {
+      console.error(`[ERROR] Can't get all pets: ${e}`);
+      return rejectWithValue(e);
+    }
   },
 );

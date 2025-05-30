@@ -12,4 +12,9 @@ export const styles = StyleSheet.create({
     overflow: 'hidden',
     backgroundColor: colors.orange.orange50,
   },
+
+  imagePressable: {
+    flexShrink: 1,
+    flex: 1,
+  },
 });

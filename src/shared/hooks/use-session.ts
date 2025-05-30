@@ -1,7 +1,5 @@
 import * as SecureStore from 'expo-secure-store';
 import {useSyncExternalStore} from 'react';
-import {useAppDispatch} from '@shared/store';
-import {logout} from '@entities/user/model/slice';
 
 export type SessionState = string | null;
 type Listener = () => void;
@@ -57,7 +55,6 @@ export async function signIn(token: string) {
 
 export async function signOut() {
   await setSessionAsync(null);
-  useAppDispatch()(logout());
 }
 
 export function useSession() {
