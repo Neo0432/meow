@@ -18,6 +18,7 @@ export const orange = {
 
 export const red = {
   red300: '#A75B5B',
+  red200: '#DD5353',
 };
 
 export const green = {

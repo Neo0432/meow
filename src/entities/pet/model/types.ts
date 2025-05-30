@@ -1,5 +1,7 @@
 export interface IPet {
   id: string;
+
+  //TODO Rename to imageUrl
   imageSource: string;
 
   name: string;

@@ -5,7 +5,7 @@ import {SafeAreaViewLayout} from '@entrypoint/layouts/safe-area-layout';
 import {Image} from 'expo-image';
 import {styles} from './style';
 import {PetCardHeader} from '@entrypoint/headers/pet-card-header';
-import {useLocalSearchParams} from 'expo-router';
+import {useLocalSearchParams, useRouter} from 'expo-router';
 import {useAppDispatch, useAppSelector} from '@shared/store';
 import {selectCurrentPet} from '@entities/pet/model/selectors';
 import {useEffect} from 'react';
@@ -16,6 +16,7 @@ export function PetCardOpened() {
   console.log('PetCardOpened');
   const {id} = useLocalSearchParams<{id: string}>();
   const dispatch = useAppDispatch();
+  const router = useRouter();
 
   useEffect(() => {
     dispatch(petGetPetById(id));
@@ -28,7 +29,11 @@ export function PetCardOpened() {
     <>
       <Image source={pet.imageSource} contentFit="cover" style={styles.image} />
       <SafeAreaViewLayout>
-        <PetCardHeader />
+        <PetCardHeader
+          onRightAction={() => {
+            router.push(`../edit-pet-card/[${pet.id}]`);
+          }}
+        />
         <View style={styles.screen}>
           <View style={styles.substrate}>
             <PetsInfo pet={pet} />

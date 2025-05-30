@@ -45,3 +45,10 @@ export interface IIconProps {
 export interface IIconRoundedButtonType extends IIconProps {
   icon: 'add' | 'camera';
 }
+
+export type TButtonIcons = 'delete';
+
+export interface IButtonWithTextIconProps extends IButtonWithLoadingProps {
+  icon: 'delete';
+  iconPosition?: 'left' | 'right';
+}

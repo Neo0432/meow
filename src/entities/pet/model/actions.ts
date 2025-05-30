@@ -58,30 +58,30 @@ export const petCreateNewPet = createAsyncThunk(
   'pet/create/new-pet',
   async (petData: ICreatePetFormData, {rejectWithValue}) => {
     console.log(petData);
-    // try {
-    //   const response: AxiosResponse<IPet> = await authClient.post(
-    //     '/pet/create-new',
-    //     petData,
-    //   );
-    //
-    //   if (response) {
-    //     console.log('response');
-    //     console.log(response?.data);
-    //   }
-    //TODO: Fix it
-    return {
-      id: '123145',
-      ...petData,
-      lastFeed: new Date().toISOString(),
-      lastWalk: new Date().toISOString(),
-      lastMedical: new Date().toISOString(),
-    } as IPet;
-    // return response.data;
-    // } catch (e) {
-    //   console.error(`[ERROR] Cant create pet with data ${petData}: ${e}`);
-    //
-    //   return rejectWithValue(e);
-    // }
+    try {
+      const response: AxiosResponse<IPet> = await authClient.post(
+        '/pet/create-new',
+        petData,
+      );
+
+      if (response) {
+        console.log('response');
+        console.log(response?.data);
+      }
+      //TODO: Fix it
+      // return {
+      //   id: '123145',
+      //   ...petData,
+      //   lastFeed: new Date().toISOString(),
+      //   lastWalk: new Date().toISOString(),
+      //   lastMedical: new Date().toISOString(),
+      // } as IPet;
+      return response.data;
+    } catch (e) {
+      console.error(`[ERROR] Cant create pet with data ${petData}: ${e}`);
+
+      return rejectWithValue(e);
+    }
   },
 );
 

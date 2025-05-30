@@ -1,4 +1,4 @@
-import {ScrollView, View} from 'react-native';
+import {FlatList, ScrollView, View} from 'react-native';
 import {styles} from './style';
 import {PetClosedCardWithActions} from '@features/pets';
 import {IPet} from '@entities/pet/model/types';
@@ -18,9 +18,9 @@ export default function HomeScreen() {
 
   const dispatch = useAppDispatch();
 
-  // useEffect(() => {
-  //   dispatch(petGetAll());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(petGetAll());
+  }, [dispatch]);
 
   let pets: IPet[] = useAppSelector(selectAllPets);
 
@@ -36,8 +36,9 @@ export default function HomeScreen() {
 
         <View style={styles.content}>
           {pets.length ? (
-            <ScrollView contentContainerStyle={styles.scroll}>
-              {pets.map(pet => (
+            <FlatList
+              data={pets}
+              renderItem={({item: pet}) => (
                 <PetClosedCardWithActions
                   pet={pet}
                   onPress={() => {
@@ -45,8 +46,8 @@ export default function HomeScreen() {
                   }}
                   key={pet.id}
                 />
-              ))}
-            </ScrollView>
+              )}
+              contentContainerStyle={styles.scroll}></FlatList>
           ) : (
             <PostPlaceholder />
           )}
