@@ -7,7 +7,7 @@ export function PetBubbles({
   sex = 'Male',
   vaccine,
 }: {
-  age: number;
+  age?: string;
   sex?: 'Male' | 'Female';
   vaccine: boolean;
 }) {
@@ -15,7 +15,7 @@ export function PetBubbles({
 
   return (
     <View style={styles.container}>
-      <Bubble title="age" value={age?.toString()} color="blue" />
+      <Bubble title="age" value={age} color="blue" />
       <Bubble title="sex" value={sexValue} color="orange" />
       <Bubble title="vaccine" value={String(vaccine || '')} color="green" />
     </View>

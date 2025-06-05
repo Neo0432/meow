@@ -8,7 +8,7 @@ export function PetImage({pet}: {pet: IPet}) {
   return (
     <View style={styles.component}>
       <ImageBackground
-        source={pet.imageSource}
+        source={pet.imageUrl}
         contentFit="cover"
         style={styles.image}>
         <LinearGradient

@@ -1,8 +1,9 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import {authClient} from '@shared/api/clients';
-import {IPet} from './types';
+import {IPet, IPetUpdateDto} from './types';
 import {ICreatePetFormData} from '@features/pets/pet-create-form/model/types';
-import {AxiosResponse} from 'axios';
+import uuid from 'react-native-uuid';
+import {getPetAge} from '@shared/lib/get-pet-age';
 
 export const petActionFeed = createAsyncThunk(
   'pet/action/feed',
@@ -14,7 +15,7 @@ export const petActionFeed = createAsyncThunk(
 
       const response = {
         id: petId,
-        lastFeed: new Date().toString(),
+        lastFeed: new Date(),
       };
       return response;
     } catch (e) {
@@ -28,9 +29,14 @@ export const petActionWalk = createAsyncThunk(
   'pet/action/walk',
   async (petId: string, {rejectWithValue}) => {
     try {
-      const response = await authClient.post(`/pets/walk/${petId}`);
+      // const response = await authClient.post(`/pets/walk/${petId}`);
 
-      return response.data;
+      const response = {
+        id: petId,
+        lastWalk: new Date(),
+      };
+
+      return response;
     } catch (e) {
       console.error(`[ERROR] Can't post request on walk for ${petId}: ${e}`);
       return rejectWithValue(e);
@@ -42,9 +48,14 @@ export const petActionMedication = createAsyncThunk(
   'pet/action/medication',
   async (petId: string, {rejectWithValue}) => {
     try {
-      const response = await authClient.post(`/pets/medication/${petId}`);
+      // const response = await authClient.post(`/pets/medication/${petId}`);
 
-      return response.data;
+      const response = {
+        id: petId,
+        lastMedical: new Date(),
+      };
+
+      return response;
     } catch (e) {
       console.error(
         `[ERROR] Can't post request on medication for ${petId}: ${e}`,
@@ -59,15 +70,25 @@ export const petCreateNewPet = createAsyncThunk(
   async (petData: ICreatePetFormData, {rejectWithValue}) => {
     console.log(petData);
     try {
-      const response: AxiosResponse<IPet> = await authClient.post(
-        '/pet/create-new',
-        petData,
-      );
+      // const response: AxiosResponse<IPet> = await authClient.post(
+      //   '/pet/create-new',
+      //   petData,
+      // );
 
-      if (response) {
-        console.log('response');
-        console.log(response?.data);
-      }
+      const response: IPet = {
+        id: uuid.v4(),
+        medication: petData.vaccine,
+        lastFeed: new Date(),
+        lastMedical: new Date(),
+        lastWalk: new Date(),
+        age: getPetAge(petData.birthDate),
+        ...petData,
+      };
+
+      // if (response) {
+      // console.log('response');
+      // console.log(response?.data);
+      // }
       //TODO: Fix it
       // return {
       //   id: '123145',
@@ -76,10 +97,48 @@ export const petCreateNewPet = createAsyncThunk(
       //   lastWalk: new Date().toISOString(),
       //   lastMedical: new Date().toISOString(),
       // } as IPet;
-      return response.data;
+      return response;
     } catch (e) {
       console.error(`[ERROR] Cant create pet with data ${petData}: ${e}`);
 
+      return rejectWithValue(e);
+    }
+  },
+);
+
+export const petUpdatePet = createAsyncThunk(
+  'pet/update/pet',
+  async (
+    {id, petData}: {id: string; petData: ICreatePetFormData},
+    {rejectWithValue},
+  ) => {
+    try {
+      const response: IPet = {
+        id: id,
+        medication: petData.vaccine,
+        lastFeed: new Date(),
+        lastMedical: new Date(),
+        lastWalk: new Date(),
+        age: getPetAge(petData.birthDate),
+        ...petData,
+      };
+      return response;
+    } catch (e) {
+      console.error(
+        `[ERROR] Cant update pet with data ${JSON.stringify(petData)}: ${e}`,
+      );
+      return rejectWithValue(e);
+    }
+  },
+);
+
+export const petDeletePet = createAsyncThunk(
+  'pet/delete/pet',
+  async (petId: string, {rejectWithValue}) => {
+    try {
+      return petId;
+    } catch (e) {
+      console.error(`[ERROR] Cant delete pet with id ${petId}: ${e}`);
       return rejectWithValue(e);
     }
   },

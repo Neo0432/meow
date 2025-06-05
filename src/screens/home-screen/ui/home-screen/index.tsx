@@ -8,26 +8,18 @@ import {PostPlaceholder} from '@screens/home-screen/ui/placeholder';
 import {UserHeader} from '@features/user/user-header';
 import {DarkBgLayout} from '@entrypoint/layouts/dark-bg-layout';
 //TODO: Remove mocks
-import {petArray} from '@mocks/pet';
 import {useRouter} from 'expo-router';
-import {useEffect} from 'react';
-import {petGetAll} from '@entities/pet/model/actions';
 
 export default function HomeScreen() {
   const router = useRouter();
 
-  const dispatch = useAppDispatch();
+  // const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    dispatch(petGetAll());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(petGetAll());
+  // }, [dispatch]);
 
   let pets: IPet[] = useAppSelector(selectAllPets);
-
-  //TODO: Remove mocks
-  if (!pets.length) {
-    pets = petArray;
-  }
 
   return (
     <DarkBgLayout>
@@ -42,7 +34,7 @@ export default function HomeScreen() {
                 <PetClosedCardWithActions
                   pet={pet}
                   onPress={() => {
-                    router.push(`../pet-card/${pet.id}`);
+                    router.push(`/pet-card/${pet.id}`);
                   }}
                   key={pet.id}
                 />

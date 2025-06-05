@@ -6,23 +6,10 @@ import {UserAddedInfo} from '@features/user/edit-user-form/ui/user-added-info';
 export function EditUserForm() {
   const methods = useCreateUserEditForm();
 
-  const {
-    control,
-    formState: {isValid, isLoading, isSubmitting},
-    handleSubmit,
-  } = methods;
-
-  const formDisabled = isLoading || isSubmitting;
-
   return (
     <FormProvider {...methods}>
-      <UserMainInfo
-        control={control}
-        formDisabled={formDisabled}
-        handleSubmit={handleSubmit}
-        isValid={isValid}
-      />
-      <UserAddedInfo control={control} formDisabled={formDisabled} />
+      <UserMainInfo />
+      <UserAddedInfo />
     </FormProvider>
   );
 }

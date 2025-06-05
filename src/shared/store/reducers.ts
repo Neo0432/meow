@@ -9,5 +9,5 @@ const combineReducer = combineReducers({
   pet: petsReducer,
 });
 
-const persistConfig = {key: 'root', storage: AsyncStorage, whitelist: ['user']};
+const persistConfig = {key: 'root', storage: AsyncStorage};
 export const persistedReducer = persistReducer(persistConfig, combineReducer);

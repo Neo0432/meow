@@ -14,13 +14,13 @@ export function SessionProvider({children}: {children: ReactNode}) {
     loadSession();
   }, []);
 
-  useEffect(() => {
-    if (!session) dispatch(logout());
-  }, [session, dispatch]);
+  // useEffect(() => {
+  //   if (!session) dispatch(logout());
+  // }, [session, dispatch]);
 
   useEffect(() => {
     const task = InteractionManager.runAfterInteractions(() => {
-      if (session) router.replace('/auth/login');
+      if (!session) router.replace('/auth/login');
       else router.replace('/(app)/(root)/(tabs)/home');
     });
 

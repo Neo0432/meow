@@ -6,7 +6,6 @@ export const useSignInSubmit = () => {
   const dispatch = useAppDispatch();
 
   return async (data: ISignInForm) => {
-    console.log(data);
     dispatch(userSignIn(data));
   };
 };

@@ -1,16 +1,18 @@
-import {Control, Controller} from 'react-hook-form';
+import {Control, Controller, useFormContext} from 'react-hook-form';
 import {InputUnderlined} from '@shared/ui/inputs/input-underlined';
 import {InputUnderlinedLabel} from '@shared/ui/inputs/input-label';
 import {View} from 'react-native';
 import {IEditUserForm} from '@features/user/edit-user-form/model/types';
 import {styles} from './style';
+import {isLoading} from 'expo-font';
 
-interface UserAddedInfoProps {
-  control: Control<IEditUserForm>;
-  formDisabled: boolean;
-}
+export function UserAddedInfo() {
+  const {
+    control,
+    formState: {isSubmitting, isLoading},
+  } = useFormContext();
 
-export function UserAddedInfo({control, formDisabled}: UserAddedInfoProps) {
+  const formDisabled = isSubmitting && isLoading;
   return (
     <View style={styles.container}>
       <Controller

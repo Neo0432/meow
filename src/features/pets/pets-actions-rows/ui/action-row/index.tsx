@@ -1,12 +1,12 @@
 import {Text, View} from 'react-native';
 import {ButtonPetAction} from '@shared/ui/buttons/button-pet-action';
 import {styles} from './style';
-import {getHoursSince} from '@features/pets/pets-actions-rows/lib/get-hours-since';
+import {getTimeSince} from '@features/pets/pets-actions-rows/lib/get-time-since';
 
 export interface ActionRowProps {
   actionName: string;
   icon: 'feed' | 'walk' | 'pill';
-  value?: string;
+  value?: string | Date;
   onActionClick: () => void;
   buttonDisabled?: boolean;
 }
@@ -18,7 +18,7 @@ export function ActionRow({
   onActionClick,
   buttonDisabled,
 }: ActionRowProps) {
-  const valueToDisplay = getHoursSince(value) + 'h ago';
+  const valueToDisplay = getTimeSince(value) + ' ago';
   return (
     <View style={styles.row}>
       <View style={styles.textArea}>

@@ -11,23 +11,28 @@ import {selectCurrentPet} from '@entities/pet/model/selectors';
 import {useEffect} from 'react';
 import {petGetPetById} from '@entities/pet/model/actions';
 import {pet as petInfo} from '@mocks/pet';
+import {setOpenedPet} from '@entities/pet/model/slice';
 
 export function PetCardOpened() {
-  console.log('PetCardOpened');
-  const {id} = useLocalSearchParams<{id: string}>();
+  const {petId} = useLocalSearchParams<{petId: string}>();
   const dispatch = useAppDispatch();
   const router = useRouter();
 
   useEffect(() => {
-    dispatch(petGetPetById(id));
-  }, [dispatch, id]);
+    dispatch(setOpenedPet(petId));
+  }, [petId]);
+
+  // useEffect(() => {
+  //   dispatch(petGetPetById(id));
+  // }, [dispatch, id]);
 
   let pet = useAppSelector(selectCurrentPet);
 
-  if (!pet.id) pet = petInfo;
+  if (!pet?.id) return null;
+
   return (
     <>
-      <Image source={pet.imageSource} contentFit="cover" style={styles.image} />
+      <Image source={pet.imageUrl} contentFit="cover" style={styles.image} />
       <SafeAreaViewLayout>
         <PetCardHeader
           onRightAction={() => {

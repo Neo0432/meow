@@ -20,3 +20,11 @@ export interface IUserAuthResponseDto {
   token: string;
   user: IUser;
 }
+
+export interface IUserUpdateDto {
+  name: string;
+  email: string;
+
+  imageUrl: string;
+  phoneNumber: string;
+}

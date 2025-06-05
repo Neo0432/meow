@@ -11,6 +11,8 @@ import {ScrollView} from 'react-native';
 import {useState} from 'react';
 import {UIButtonWithTextIcon} from '@shared/ui/buttons/button-with-text-icon';
 import {IPetUpsertForm} from '@widgets/pet-forms/types';
+import {useDeletePet} from '../hooks/use-delete-pet';
+import {ModalScreenHeader} from '@entrypoint/headers';
 
 export function PetUpsertForm({onSubmit, formType}: IPetUpsertForm) {
   const {
@@ -22,117 +24,129 @@ export function PetUpsertForm({onSubmit, formType}: IPetUpsertForm) {
   const formDisabled = isLoading || isSubmitting;
   const [showPicker, setShowPicker] = useState<boolean>(false);
 
+  const onDelete = useDeletePet();
+
   return (
-    <ScrollView
-      contentContainerStyle={{gap: 24}}
-      showsVerticalScrollIndicator={false}>
-      <Controller
-        control={control}
-        render={({field: {value, onChange}}) => (
-          <ImagePickerArea
-            type={'post'}
-            mediaUrl={value || ''}
-            setImageUrl={onChange}
-            isAreaDisabled={formDisabled}
-          />
-        )}
-        name="imageUrl"
+    <>
+      <ModalScreenHeader
+        title={formType === 'create' ? 'Create pet card' : 'Edit pet card'}
+        goBackButton={true}
+        rightActionName={formType === 'update' ? 'Save' : undefined}
+        onRightAction={
+          formType === 'update' ? handleSubmit(onSubmit) : undefined
+        }
       />
-      <FieldsCategory categoryName="Pet description">
-        <Controller
-          control={control}
-          render={({field: {value, onBlur, onChange}}) => (
-            <InputUnderlined
-              title={<InputUnderlinedLabel>Name*</InputUnderlinedLabel>}
-              value={value}
-              onChange={onChange}
-              onBlur={onBlur}
-            />
-          )}
-          name="name"
-        />
-        <Controller
-          control={control}
-          render={({field: {value, onBlur, onChange}}) => (
-            <InputUnderlined
-              title={<InputUnderlinedLabel>Type</InputUnderlinedLabel>}
-              value={value}
-              onChange={onChange}
-              onBlur={onBlur}
-            />
-          )}
-          name="type"
-        />
+      <ScrollView
+        contentContainerStyle={{gap: 24}}
+        showsVerticalScrollIndicator={false}>
         <Controller
           control={control}
           render={({field: {value, onChange}}) => (
-            <GenderSelectorField value={value} onChange={onChange} />
-          )}
-          name="sex"
-        />
-        <Controller
-          control={control}
-          render={({field: {value, onChange}}) => (
-            <VaccineToggleField value={!!value} onChange={onChange} />
-          )}
-          name="vaccine"
-        />
-        <Controller
-          control={control}
-          render={({field}) => (
-            <DatePickerField
-              field={field}
-              showPicker={showPicker}
-              setShowPicker={setShowPicker}
-              loadingForm={formDisabled}
+            <ImagePickerArea
+              type={'post'}
+              mediaUrl={value || ''}
+              setImageUrl={onChange}
+              isAreaDisabled={formDisabled}
             />
           )}
-          name="birthDate"
+          name="imageUrl"
         />
-        <Controller
-          control={control}
-          render={({field: {value, onBlur, onChange}}) => (
-            <InputUnderlined
-              title={<InputUnderlinedLabel>Pet's breed</InputUnderlinedLabel>}
-              value={value}
-              onChange={onChange}
-              onBlur={onBlur}
-            />
-          )}
-          name="breed"
-        />
-      </FieldsCategory>
-      <FieldsCategory categoryName="Pet identification">
-        <Controller
-          control={control}
-          render={({field: {value, onBlur, onChange}}) => (
-            <InputUnderlined
-              title={<InputUnderlinedLabel>Chip number</InputUnderlinedLabel>}
-              value={value}
-              onChange={onChange}
-              onBlur={onBlur}
-            />
-          )}
-          name="chipNumber"
-        />
-      </FieldsCategory>
-      {formType === 'create' ? (
-        <UIButtonWithText
-          isLoading={formDisabled}
-          disabled={!isValid}
-          onPress={handleSubmit(onSubmit)}>
-          Create pet card
-        </UIButtonWithText>
-      ) : (
-        <UIButtonWithTextIcon
-          icon="delete"
-          iconPosition="left"
-          isLoading={formDisabled}
-          disabled={!isValid}
-          onPress={handleSubmit(onSubmit)}>
-          Delete pet card
-        </UIButtonWithTextIcon>
-      )}
-    </ScrollView>
+        <FieldsCategory categoryName="Pet description">
+          <Controller
+            control={control}
+            render={({field: {value, onBlur, onChange}}) => (
+              <InputUnderlined
+                title={<InputUnderlinedLabel>Name*</InputUnderlinedLabel>}
+                value={value}
+                onChange={onChange}
+                onBlur={onBlur}
+              />
+            )}
+            name="name"
+          />
+          <Controller
+            control={control}
+            render={({field: {value, onBlur, onChange}}) => (
+              <InputUnderlined
+                title={<InputUnderlinedLabel>Type</InputUnderlinedLabel>}
+                value={value}
+                onChange={onChange}
+                onBlur={onBlur}
+              />
+            )}
+            name="type"
+          />
+          <Controller
+            control={control}
+            render={({field: {value, onChange}}) => (
+              <GenderSelectorField value={value} onChange={onChange} />
+            )}
+            name="sex"
+          />
+          <Controller
+            control={control}
+            render={({field: {value, onChange}}) => (
+              <VaccineToggleField value={!!value} onChange={onChange} />
+            )}
+            name="vaccine"
+          />
+          <Controller
+            control={control}
+            render={({field}) => (
+              <DatePickerField
+                field={field}
+                showPicker={showPicker}
+                setShowPicker={setShowPicker}
+                loadingForm={formDisabled}
+              />
+            )}
+            name="birthDate"
+          />
+          <Controller
+            control={control}
+            render={({field: {value, onBlur, onChange}}) => (
+              <InputUnderlined
+                title={<InputUnderlinedLabel>Pet's breed</InputUnderlinedLabel>}
+                value={value}
+                onChange={onChange}
+                onBlur={onBlur}
+              />
+            )}
+            name="breed"
+          />
+        </FieldsCategory>
+        <FieldsCategory categoryName="Pet identification">
+          <Controller
+            control={control}
+            render={({field: {value, onBlur, onChange}}) => (
+              <InputUnderlined
+                title={<InputUnderlinedLabel>Chip number</InputUnderlinedLabel>}
+                value={value}
+                onChange={onChange}
+                onBlur={onBlur}
+              />
+            )}
+            name="chipNumber"
+          />
+        </FieldsCategory>
+        {formType === 'create' ? (
+          <UIButtonWithText
+            isLoading={formDisabled}
+            disabled={!isValid}
+            onPress={handleSubmit(onSubmit)}>
+            Create pet card
+          </UIButtonWithText>
+        ) : (
+          <UIButtonWithTextIcon
+            icon="delete"
+            iconPosition="left"
+            isLoading={formDisabled}
+            disabled={!isValid}
+            onPress={onDelete}>
+            Delete pet card
+          </UIButtonWithTextIcon>
+        )}
+      </ScrollView>
+    </>
   );
 }

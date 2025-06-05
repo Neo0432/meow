@@ -5,7 +5,6 @@ import {ModalScreenHeader} from '@entrypoint/headers';
 export function CreatePetCard() {
   return (
     <ModalsScreensLayout>
-      <ModalScreenHeader title="Create pet card" goBackButton={true} />
       <PetCreateForm />
     </ModalsScreensLayout>
   );

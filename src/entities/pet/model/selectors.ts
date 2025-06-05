@@ -13,6 +13,6 @@ export const selectAllPets = createSelector(
 );
 
 export const selectCurrentPet = createSelector(
-  [selectPets],
-  (petState: IPetState) => petState.selectedPet,
+  [selectAllPets, (state: RootState) => state.pet.selectedPetId],
+  (pets, id) => pets.find(p => p.id === id) ?? null,
 );

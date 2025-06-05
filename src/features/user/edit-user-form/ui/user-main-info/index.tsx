@@ -1,26 +1,25 @@
-import {Control, Controller, UseFormHandleSubmit} from 'react-hook-form';
+import {Controller, useFormContext} from 'react-hook-form';
 import {ImagePickerArea} from '@widgets/image-picker/ui/image-picker-area';
 import {ChangeableUserName} from '@features/user/edit-user-form/ui/changeable-user-name';
 import {UIButtonWithText} from '@shared/ui/buttons/button-with-text';
 import {IEditUserForm} from '@features/user/edit-user-form/model/types';
 import {styles} from './style';
 import {View} from 'react-native';
+import {useAppDispatch} from '@shared/store';
+import {updateUserData} from '@entities/user/model/slice';
 
-interface UserMainInfoProps {
-  control: Control<IEditUserForm>;
-  formDisabled: boolean;
-  handleSubmit: UseFormHandleSubmit<IEditUserForm>;
-  isValid: boolean;
-}
+export function UserMainInfo() {
+  const {
+    control,
+    formState: {isLoading, isSubmitting, isValid},
+    handleSubmit,
+  } = useFormContext<IEditUserForm>();
+  const formDisabled = isSubmitting || isLoading || !isValid;
 
-export function UserMainInfo({
-  control,
-  formDisabled,
-  handleSubmit,
-  isValid,
-}: UserMainInfoProps) {
-  const onSubmit = async (data: IEditUserForm) => {
-    console.log(data);
+  const dispatch = useAppDispatch();
+
+  const onSubmit = (data: IEditUserForm) => {
+    dispatch(updateUserData(data));
   };
 
   return (
@@ -45,7 +44,7 @@ export function UserMainInfo({
       />
       {/* TODO: Bug. Button pressed styles */}
       <UIButtonWithText
-        disabled={formDisabled || !isValid}
+        disabled={formDisabled}
         isLoading={formDisabled}
         onPress={handleSubmit(onSubmit)}
         textStyle={styles.submitButtonText}
